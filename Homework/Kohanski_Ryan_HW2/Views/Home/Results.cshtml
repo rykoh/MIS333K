@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Results";
+}
+
+<div class="container">
+    <h2>Totals</h2>
+    <h3>@ViewBag.strCode</h3>
+    <p>@ViewBag.intItemsRequested</p> 
+    <p>@ViewBag.dblTacoSubtotal</p> 
+    <p>@ViewBag.dblSandSubtotal</p> 
+    <p>@ViewBag.dblSubtotal</p> 
+    <p>@ViewBag.dblTax</p>
+    <p>@ViewBag.dblTotal</p> 
+
+    <a asp-action="Index" class="btn btn-success">Back to Order Page</a>
+</div>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <h2>Select an Order Type</h2>
+
+<p>
+    <a asp-action="CheckoutWalkup" class="btn btn-info">Walkup</a>
+    <a asp-action="CheckoutCatering" class="btn btn-success">Catering</a>
+</p>

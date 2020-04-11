@@ -1,0 +1,44 @@
+﻿@model Kohanski_Ryan_HW3.Models.WalkupOrder
+
+@{
+    ViewData["Title"] = "CheckoutWalkup";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Checkout Walkup</h1>
+
+<h4>Enter Order Information:</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="WalkupTotals">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfTacos" class="control-label"></label>
+                <input asp-for="NumberOfTacos" class="form-control" />
+                <span asp-validation-for="NumberOfTacos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfSandwiches" class="control-label"></label>
+                <input asp-for="NumberOfSandwiches" class="form-control" />
+                <span asp-validation-for="NumberOfSandwiches" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to Home Page</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
