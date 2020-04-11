@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Kohanski_Ryan_HW4.Models.Movie>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movie Search Page</h1>
+<form asp-action="Index" asp-controller="Home" method="get">
+    <!-- a textbox on the Index view to allow the user to enter the search string for the quick search -->
+    <!-- The code below adds the textbox for the quick search and three buttons (Search, Advanced Search, and Show All) -->
+    <p class="form-group">
+        Search: <input name="SearchString" class="form-control" /><br />
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="DetailedSearch" class="btn btn-success">Detailed Search</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+    </p>
+</form>
+<p>
+    <!-- “Displaying X out of Y Movies”  -->
+    Displaying @ViewBag.SelectedMovieCount of @ViewBag.AllMovieCount
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Genre.GenreName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReleaseDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoteAverage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VoteCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model) 
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre.GenreName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReleaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoteAverage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VoteCount)
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.MovieID">Details</a>
+        </tr>
+        }
+    </tbody>
+</table>

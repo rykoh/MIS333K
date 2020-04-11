@@ -1,0 +1,55 @@
+﻿@model Kohanski_Ryan_HW4.Models.ViewModels.SearchViewModel
+@using Kohanski_Ryan_HW4.Controllers
+
+@{
+    ViewData["Title"] = "DetailedSearch";
+}
+
+<h1>Detailed Search</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DisplaySearchResults" asp-controller="Home" method="get">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TitleSearch" class="control-label"></label>
+                <input asp-for="TitleSearch" class="form-control" />
+                <span asp-validation-for="TitleSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescriptionSearch" class="control-label"></label>
+                <input asp-for="DescriptionSearch" class="form-control" />
+                <span asp-validation-for="DescriptionSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GenreSearch" class="control-label"></label>
+                @Html.DropDownListFor(model => model.GenreSearch, (SelectList)ViewBag.AllGenres, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="RatingSearch" class="control-label"></label>
+                <input asp-for="RatingSearch" type="number" class="form-control" />
+                <span asp-validation-for="RatingSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="radio">@Html.RadioButtonFor(model => model.SelectionType, SelectionType.GreaterThan) Greater Than</label>
+                <label class="radio">@Html.RadioButtonFor(model => model.SelectionType, SelectionType.LessThan) Less Than</label>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateSearch" class="control-label"></label>
+                <input asp-for="DateSearch" class="form-control" />
+                <span asp-validation-for="DateSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

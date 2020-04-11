@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="SP20KohanskiRyanHW4" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Ryan\\Desktop\\MIS\ 333K\\Kohanski_Ryan_HW4\\obj\\Release\\netcoreapp2\.2\\PubTmp\\Out\\$" />
+  </parameter>
+</parameters>
