@@ -28,7 +28,7 @@ namespace Kohanski_Ryan_HW4
         services.AddMvc();
         //TODO: Add a connection string here once you have created it on Azure
         //Be sure to change MultipleActiveResultSets to True
-        String connectionString = "Server=tcp:sp20kohanskiryanhw4.database.windows.net,1433;Initial Catalog=SP20KohanskiRyanHW4;Persist Security Info=False;User ID=MISAdmin;Password=Password123;MultipleActiveResultSets=True;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        String connectionString = "Server=";
 
         //TODO: Uncomment this line once you have your connection string
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
