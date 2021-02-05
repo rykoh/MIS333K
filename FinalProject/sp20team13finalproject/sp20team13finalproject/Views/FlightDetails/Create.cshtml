@@ -1,0 +1,60 @@
+﻿@model sp20team13finalproject.Models.FlightDetail
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FlightDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FlightNum" class="control-label"></label>
+                <input asp-for="FlightNum" class="form-control" />
+                <span asp-validation-for="FlightNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pilot" class="control-label"></label>
+                <input asp-for="Pilot" class="form-control" />
+                <span asp-validation-for="Pilot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CoPilot" class="control-label"></label>
+                <input asp-for="CoPilot" class="form-control" />
+                <span asp-validation-for="CoPilot" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlightAttendant" class="control-label"></label>
+                <input asp-for="FlightAttendant" class="form-control" />
+                <span asp-validation-for="FlightAttendant" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseFare" class="control-label"></label>
+                <input asp-for="BaseFare" class="form-control" />
+                <span asp-validation-for="BaseFare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="flightStatus" class="control-label"></label>
+                <select asp-for="flightStatus" class="form-control"></select>
+                <span asp-validation-for="flightStatus" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

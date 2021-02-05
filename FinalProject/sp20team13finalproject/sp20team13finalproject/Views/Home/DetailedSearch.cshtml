@@ -1,0 +1,68 @@
+﻿@model sp20team13finalproject.Models.ViewModels.SearchViewModel
+@using sp20team13finalproject.Controllers
+
+@{
+    ViewData["Title"] = "Detailed Search";
+}
+
+<h1>Detailed Search</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="DisplaySearchResults">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="DepartureSearch" class="control-label"></label>
+                @Html.DropDownListFor(model => model.DepartureSearch, (SelectList)ViewBag.AllCities, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="ArrivalSearch" class="control-label"></label>
+                @Html.DropDownListFor(model => model.ArrivalSearch, (SelectList)ViewBag.AllCities, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="NumPassSearch" class="control-label"></label>
+                <input asp-for="NumPassSearch" class="form-control" />
+                <span asp-validation-for="NumPassSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="radio">@Html.RadioButtonFor(model => model.tripType, TripType.OneWay) One Way </label>
+                    <label class="radio">@Html.RadioButtonFor(model => model.tripType, TripType.RoundTrip) Round Trip </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateSearch" class="control-label"></label>
+                <input asp-for="StartDateSearch" type="date" class="form-control" />
+                <span asp-validation-for="StartDateSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateSearch" class="control-label"></label>
+                <input asp-for="EndDateSearch" type="date" class="form-control" />
+                <span asp-validation-for="EndDateSearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartTimeSearch" class="control-label"></label>
+                @Html.DropDownListFor(model => model.StartTimeSearch, (SelectList)ViewBag.AllDepTimes, new { @class = "form-control" })
+            </div>
+            <!--
+    <div class="form-group">
+        <label asp-for="EndTimeSearch" class="control-label"></label>
+        <input asp-for="EndTimeSearch" class="form-control" />
+        <span asp-validation-for="EndTimeSearch" class="text-danger"></span>
+    </div>
+    -->
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+

@@ -1,0 +1,77 @@
+﻿@model sp20team13finalproject.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReservationID" />
+            <div class="form-group">
+                <label asp-for="ReservationNum" class="control-label"></label>
+                @Html.DisplayFor(model => model.ReservationNum, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationNum" class="control-label"></label>
+                @Html.DisplayFor(model => model.AppUser.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationNum" class="control-label"></label>
+                @Html.DisplayFor(model => model.AppUser.LastName, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="ReservationNum" class="control-label"></label>
+                @Html.DisplayFor(model => model.ReservationDate, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<h5>Tickets in this Reservation</h5>
+<table class="table table-primary">
+    <tr>
+        <th>Customer First Name</th>
+        <th>Customer Last Name</th>
+        <th>Flight Number</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Flight Status</th>
+        <th>Departing City</th>
+        <th>Arriving City</th>
+        <th>Seat</th>
+        <th>Seat Fare</th>
+        <th>Price</th>
+
+    </tr>
+    @foreach (Ticket t in Model.Tickets)
+    {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem => t.CustomerFirstName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.CustomerLastName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.FlightNum)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Date)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.DepTime)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.flightStatus)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.DepCity)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.ArrivalCity)</td>
+            <td>@Html.DisplayFor(ModelItem => t.SeatName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.SeatFare)</td>
+            <td>@Html.DisplayFor(ModelItem => t.Price)</td>
+        </tr>
+    }
+</table>
+<div>
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+    <a asp-action="CreateOther" asp-controller="Tickets" asp-route-reservationId="@Model.ReservationID" asp-route-flightdetailID="@Model.Tickets[0].FlightDetail.FlightDetailID" class="btn btn-warning">Add Another Ticket</a>
+    <a asp-action="DetailedSearch" asp-controller="Home" asp-route-reservationId="@Model.ReservationID" class="btn btn-primary">Add Round Trip Ticket</a>
+    <a asp-action="Index" asp-controller="Tickets" asp-route-reservationId="@Model.ReservationID" class="btn btn-danger">Edit Existing Tickets</a>
+</div>
+

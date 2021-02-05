@@ -1,0 +1,129 @@
+﻿@model sp20team13finalproject.Models.ViewModels.TicketViewModel
+@using sp20team13finalproject.Controllers
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Ticket</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateOther">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FlightDetail.FlightDetailID" />
+            <input type="hidden" asp-for="Reservation.ReservationID" />
+            @Html.HiddenFor(model => model.Reservation.ReservationID)
+            @Html.HiddenFor(model => model.FlightDetail.FlightDetailID)
+            <div class="form-group">
+                <label asp-for="CustomerEmail" class="control-label"></label>
+                @Html.DropDownList("SelectedCustomer", (SelectList)ViewBag.AllCustomers, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label asp-for="SeatName" class="control-label"></label>
+                @Html.DropDownList("SelectedSeat", (SelectList)ViewBag.AllSeats, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<h2>Seats:</h2>
+
+<table style="width:100%">
+    <tr>
+        <th>Seat Name</th>
+        <th>Seat Class</th>
+        <th>Location</th>
+    </tr>
+    <tr>
+        <td>1A</td>
+        <td>First Class</td>
+        <td>Window/Aisle</td>
+    </tr>
+    <tr>
+        <td>1B</td>
+        <td>First Class</td>
+        <td>Window/Aisle</td>
+    </tr>
+    <tr>
+        <td>2A</td>
+        <td>First Class</td>
+        <td>Window/Aisle</td>
+    </tr>
+    <tr>
+        <td>2B</td>
+        <td>First Class</td>
+        <td>Window/Aisle</td>
+    </tr>
+    <tr>
+        <td>3A</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+    <tr>
+        <td>3B</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>3C</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>3D</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+    <tr>
+        <td>4A</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+    <tr>
+        <td>4B</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>4C</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>4D</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+    <tr>
+        <td>5A</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+    <tr>
+        <td>5B</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>5C</td>
+        <td>Economy</td>
+        <td>Aisle</td>
+    </tr>
+    <tr>
+        <td>5D</td>
+        <td>Economy</td>
+        <td>Window</td>
+    </tr>
+</table>
+
+<div>
+    @*<a asp-action="Index" asp-route-reservationID="@Model.Reservation.ReservationID">Back to List</a>*@
+    <a asp-action="Index">Back to List</a>
+</div>
+

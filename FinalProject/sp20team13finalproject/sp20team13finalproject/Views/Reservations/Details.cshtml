@@ -1,0 +1,118 @@
+﻿@model sp20team13finalproject.Models.Reservation
+@using sp20team13finalproject.Controllers
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reservation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationNum)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReservationNum)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUser.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AppUser.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AppUser.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AppUser.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ReservationDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ReservationDate)
+        </dd>
+    </dl>
+</div>
+<h5>Tickets in this Reservation</h5>
+<table class="table table-primary">
+    <tr>
+        <th>Customer First Name</th>
+        <th>Customer Last Name</th>
+        <th>Flight Number</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Flight Status</th>
+        <th>Departing City</th>
+        <th>Arriving City</th>
+        <th>Seat</th>
+        <th>Seat Fare</th>
+        <th>Price</th>
+
+    </tr>
+    @foreach (Ticket t in Model.Tickets)
+    {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem => t.CustomerFirstName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.CustomerLastName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.FlightNum)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Date)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.DepTime)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.flightStatus)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.DepCity)</td>
+            <td>@Html.DisplayFor(ModelItem => t.FlightDetail.Flight.ArrivalCity)</td>
+            <td>@Html.DisplayFor(ModelItem => t.SeatName)</td>
+            <td>@Html.DisplayFor(ModelItem => t.SeatFare)</td>
+            <td>@Html.DisplayFor(ModelItem => t.Price)</td>
+        </tr>
+    }
+</table>
+
+<h5>Reservation Summary</h5>
+<table class="table table-sm table-bordered" style="width:30%">
+    <tr>
+        <th colspan="2" style="text-align:center">Reservation Summary</th>
+    </tr>
+    <tr>
+        <td>Base Fare Subtotal:</td>
+        <td>@Html.DisplayFor(model => model.BaseFareSubtotal)</td>
+    </tr>
+    <tr>
+        <td>Premium/Discount:</td>
+        <td>@Html.DisplayFor(model => model.DiscountTotal)</td>
+    </tr>
+    <tr>
+        <td>Tax Total:</td>
+        <td>@Html.DisplayFor(model => model.TaxTotal)</td>
+    </tr>
+    <tr>
+        <td>Modification Fee:</td>
+        <td>@Html.DisplayFor(model => model.ModFee)</td>
+    </tr>
+    <tr>
+        <td>Reservation TOTAL:</td>
+        <td>@Html.DisplayFor(model => model.ReservationTotal)</td>
+    </tr>
+    
+</table>
+<form asp-action="Checkout" asp-route-id="@Model.ReservationID">
+    <div asp-validation-summary="ModelOnly" class="text-danger">
+    </div>
+    <span class="text-danger">@ViewBag.ErrorMessage</span>
+    <div class="form-group">
+        <label class="radio">@Html.RadioButtonFor(model => model.PaymentMethod, PaymentType.Card) Card</label>
+        <label class="radio">@Html.RadioButtonFor(model => model.PaymentMethod, PaymentType.Miles) Miles</label>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Checkout" class="btn btn-success" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ReservationID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

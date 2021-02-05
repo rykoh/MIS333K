@@ -1,0 +1,39 @@
+﻿@model sp20team13finalproject.Models.Reservation
+
+@{
+    ViewData["Title"] = "Receipt";
+}
+
+<h2>Thank You For Choosing to Fly Longhorn Airlines!</h2>
+
+<h5>Your Purchase is Complete!</h5>
+<table class="table table-sm table-bordered" style="width:30%">
+    <tr>
+        <th colspan="2" style="text-align:center">Here is your receipt:</th>
+    </tr>
+    <tr>
+        <td>Base Fare Subtotal:</td>
+        <td>@Html.DisplayFor(model => model.BaseFareSubtotal)</td>
+    </tr>
+    <tr>
+        <td>Premium/Discount:</td>
+        <td>@Html.DisplayFor(model => model.DiscountTotal)</td>
+    </tr>
+    <tr>
+        <td>Tax Total:</td>
+        <td>@Html.DisplayFor(model => model.TaxTotal)</td>
+    </tr>
+    <tr>
+        <td>Modification Fee:</td>
+        <td>@Html.DisplayFor(model => model.ModFee)</td>
+    </tr>
+    <tr>
+        <td>Reservation TOTAL:</td>
+        <td>@Html.DisplayFor(model => model.ReservationTotal)</td>
+    </tr>
+
+</table>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Back to List</a>
+</div>

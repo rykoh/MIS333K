@@ -1,0 +1,39 @@
+﻿@model IndexViewModel
+@{
+    ViewBag.Title = "Change Password";
+}
+@using sp20team13finalproject.Models
+
+<h2>@ViewBag.Title.</h2>
+
+<div>
+    <h4>Change your account settings</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>User Name:</dt>
+        <dd>@Model.UserName</dd>
+
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+
+        <dt>Miles:</dt>
+        <dd>@Model.Miles</dd>
+
+        <dt>Phone Number:</dt>
+        <dd>@Model.Phone</dd>
+
+        <dt>Password:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your password", "ChangePassword")
+            }
+            ]
+
+        </dd>
+    </dl>
+
+
+</div>
+<hr />

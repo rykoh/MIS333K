@@ -1,0 +1,67 @@
+﻿@model sp20team13finalproject.Models.FlightDetail
+@using sp20team13finalproject.Controllers
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>FlightDetail</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FlightDetailID" />
+            <div class="form-group">
+                <label asp-for="FlightNum" class="control-label"></label>
+                <input asp-for="FlightNum" class="form-control" />
+                <span asp-validation-for="FlightNum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="Pilot" class="control-label"></label>
+                    @Html.DropDownList("SelectedPilot", (SelectList)ViewBag.AllPilots, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="CoPilot" class="control-label"></label>
+                    @Html.DropDownList("SelectedCoPilot", (SelectList)ViewBag.AllCoPilots, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="FlightAttendant" class="control-label"></label>
+                    @Html.DropDownList("SelectedFlightAttendant", (SelectList)ViewBag.AllFlightAttendants, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaseFare" class="control-label"></label>
+                <input asp-for="BaseFare" class="form-control" />
+                <span asp-validation-for="BaseFare" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label class="radio">@Html.RadioButtonFor(model => model.flightStatus, FlightStatus.OnTime) On Time</label>
+                    <label class="radio">@Html.RadioButtonFor(model => model.flightStatus, FlightStatus.Departed) Departed</label>
+                    <label class="radio">@Html.RadioButtonFor(model => model.flightStatus, FlightStatus.Cancelled) Cancelled </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

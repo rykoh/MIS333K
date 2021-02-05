@@ -1,0 +1,75 @@
+﻿@model IEnumerable<sp20team13finalproject.Models.FlightDetail>
+@using sp20team13finalproject.Models
+
+@{
+    ViewData["Title"] = "Longhorn Airlines";
+}
+
+<h1>Search Results</h1>
+<form asp-action="RoundTrip" asp-controller="Home" method="get">
+    <!-- a textbox on the Index view to allow the user to enter the search string for the quick search -->
+    <!-- The code below adds the textbox for the quick search and three buttons (Search, Advanced Search, and Show All) -->
+    <p class="form-group">
+        <button type="submit" class="btn btn-primary">Search</button>
+        <a asp-action="Index" class="btn btn-info">Show All</a>
+        <a asp-action="DetailedSearch" class="btn btn-success">Make a Reservation</a>
+    </p>
+</form>
+<p>
+    <!-- “Displaying X out of Y Movies”  -->
+    Displaying @ViewBag.SelectedFlightDetailsCount of @ViewBag.AllFlightDetailsCount
+</p>
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FlightNum)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.DepCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.ArrivalCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flight.DepTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BaseFare)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FlightNum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.DepCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.ArrivalCity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Flight.DepTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaseFare)
+                </td>
+                <td>
+                    <a asp-action="RoundTrip" asp-route-flightDetailID2="@item.FlightDetailID">Reserve</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
